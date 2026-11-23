@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed Elsayed | Data Analyst &amp; Business Intelligence Portfolio</title>
+  <meta name="description" content="Executive Data Analytics & Business Intelligence Portfolio of Ahmed Elsayed — Power BI (.pbip/.pbix, DAX, TMDL, Star Schema, Dynamic SVG), Tableau (.twbx), DuckDB SQL, Python & R across Healthcare, HR, and Financial Risk." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-alt: #0c1322;
+      --surface: #111a2e;
+      --surface-hover: #16223b;
+      --border: #1e2d4a;
+      --border-highlight: #3b82f6;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --blue: #3b82f6;
+      --cyan: #06b6d4;
+      --teal: #14b8a6;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --purple: #8b5cf6;
+      --radius: 16px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
+    }
+    .brand-sub {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .nav-links a { transition: color 0.15s ease; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 13.5px;
+      transition: all 0.18s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), #2563eb);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 12px 28px rgba(59, 130, 246, 0.5); }
+    .btn-teal {
+      background: linear-gradient(135deg, var(--teal), #0d9488);
+      color: #041311;
+      box-shadow: 0 8px 24px rgba(20, 184, 166, 0.3);
+    }
+    .btn-ghost {
+      background: rgba(17, 26, 46, 0.75);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover {
+      border-color: var(--blue);
+      background: var(--surface-hover);
+    }
+    .btn-sm {
+      padding: 8px 14px;
+      font-size: 12.5px;
+      border-radius: 8px;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      padding: 84px 0 68px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -220px;
+      right: -120px;
+      width: 680px;
+      height: 680px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.18), rgba(20, 184, 166, 0.08) 45%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -240px;
+      left: -140px;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.14), transparent 68%);
+      pointer-events: none;
+    }
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      padding: 7px 14px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 10px var(--emerald);
+    }
+    h1 {
+      font-size: clamp(34px, 4.4vw, 54px);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 20px;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #60a5fa, #2dd4bf, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-lead {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+    .hero-lead strong { color: var(--text); font-weight: 700; }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-pill {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .skill-pill span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    /* HERO RIGHT TERMINAL / SUMMARY CARD */
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(17, 26, 46, 0.95), rgba(12, 19, 34, 0.95));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .hero-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .window-dots { display: flex; gap: 6px; }
+    .window-dots span { width: 10px; height: 10px; border-radius: 50%; }
+    .suite-quick-list { display: flex; flex-direction: column; gap: 11px; }
+    .suite-quick-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(7, 11, 20, 0.65);
+      border: 1px solid var(--border);
+      transition: all 0.18s ease;
+    }
+    .suite-quick-item:hover {
+      border-color: var(--blue);
+      transform: translateX(4px);
+      background: rgba(22, 34, 59, 0.7);
+    }
+    .sq-left { display: flex; align-items: center; gap: 12px; }
+    .sq-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .sq-title { font-size: 13.5px; font-weight: 700; color: var(--text); }
+    .sq-meta { font-size: 11.5px; color: var(--text-muted); }
+    .sq-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* KPI STRIP */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .kpi-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--blue);
+    }
+    .kpi-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent, var(--blue));
+    }
+    .kpi-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+    .kpi-val {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 8px 0 4px;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .kpi-sub { font-size: 12.5px; color: var(--text-muted); }
+
+    /* SECTIONS */
+    section { padding: 84px 0; }
+    section.alt {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .kicker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: clamp(26px, 3.2vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 680px;
+      margin-top: 8px;
+    }
+
+    /* FILTER PILLS */
+    .filter-bar {
+      display: inline-flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 4px;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-btn:hover { color: var(--text); }
+    .filter-btn.active {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+    }
+
+    /* FLAGSHIP BI PROJECT CARDS */
+    .flagship-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.3);
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--card-accent, var(--blue));
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.5);
+    }
+    .project-visual {
+      position: relative;
+      height: 270px;
+      background: #050811;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .project-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.35s ease;
+    }
+    .project-card:hover .project-visual img {
+      transform: scale(1.02);
+    }
+    .visual-overlay-top {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .domain-badge {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(7, 11, 20, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+    .live-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.5);
+      color: #6ee7b7;
+      backdrop-filter: blur(8px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .view-switcher {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      background: rgba(7, 11, 20, 0.86);
+      backdrop-filter: blur(10px);
+      padding: 6px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .view-chip {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .view-chip:hover { color: #fff; }
+    .view-chip.active {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .project-body {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .stack-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.28);
+      color: #93c5fd;
+    }
+    .project-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .project-summary {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    /* 3 MINI KPIS PER CARD */
+    .card-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .cm-box {
+      background: rgba(7, 11, 20, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 11px 12px;
+    }
+    .cm-val {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .cm-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+
+    .findings-list {
+      list-style: none;
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+    }
+    .findings-list li {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      padding-left: 18px;
+      position: relative;
+    }
+    .findings-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-weight: 800;
+    }
+    .findings-list strong { color: #fff; }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* COMPARISON & ANALYTICS RADAR SECTION */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .panel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .panel-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .panel-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    table.matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    table.matrix-table th,
+    table.matrix-table td {
+      padding: 12px 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    table.matrix-table th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    table.matrix-table tr:last-child td { border-bottom: none; }
+    table.matrix-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+    /* SECONDARY EDA & ML GRID */
+    .eda-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .eda-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+    .eda-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cyan);
+    }
+    .eda-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .eda-type {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--cyan);
+    }
+    .eda-card h3 {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .eda-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .eda-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+    .eda-link { color: #60a5fa; }
+    .eda-link:hover { text-decoration: underline; }
+
+    /* COMPETENCIES 4-COL */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .skill-col {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .skill-col h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .skill-col li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-left: 14px;
+      position: relative;
+    }
+    .skill-col li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-weight: 800;
+    }
+    .skill-col li strong { color: var(--text); }
+
+    /* LIVE SHOWCASE MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(4, 7, 14, 0.88);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-window {
+      width: 100%;
+      max-width: 1320px;
+      height: 88vh;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75);
+    }
+    .modal-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+    }
+    .modal-title { font-size: 14px; font-weight: 800; }
+    .modal-actions { display: flex; align-items: center; gap: 10px; }
+    .modal-iframe {
+      width: 100%;
+      flex: 1;
+      border: none;
+      background: #080c14;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 52px 0;
+      border-top: 1px solid var(--border);
+      background: #050811;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 1024px) {
+      .hero-top, .flagship-grid, .comp-grid { grid-template-columns: 1fr; }
+      .kpi-grid, .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .eda-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .kpi-grid, .eda-grid, .skills-grid, .card-metrics { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <div class="brand-badge">AE</div>
+        <div>
+          Ahmed Elsayed
+          <span class="brand-sub">Data Analyst &amp; BI Portfolio</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#flagship">Flagship BI Suites (4)</a>
+        <a href="#comparison">Architecture Matrix</a>
+        <a href="#eda-ml">EDA, R Shiny &amp; ML (6)</a>
+        <a href="#competencies">Technical Stack</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-ghost btn-sm" href="https://github.com/ahmedelsayed7115" target="_blank" rel="noopener">GitHub Profile</a>
+        <a class="btn btn-primary btn-sm" href="mailto:ahmedelsayed7115@gmail.com">Contact Me</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="hero-top">
+        <div>
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            Data Analyst &amp; Business Intelligence Developer
+          </div>
+          <h1>
+            Turning Clinical, Operational &amp; Financial Data into <span class="gradient-text">Decision-Ready BI Suites</span>
+          </h1>
+          <p class="hero-lead">
+            End-to-end analytics portfolio featuring <strong>conformed Star Schema data models</strong>, <strong>Power BI (<code>.pbip</code> / <code>.pbix</code>, DAX, TMDL, Dynamic SVG)</strong> and <strong>Tableau (<code>.twbx</code>)</strong> executive dashboards, <strong>DuckDB SQL window pipelines</strong>, and <strong>predictive Python &amp; R modeling</strong>.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#flagship">Explore 4 Live BI Showcases ↓</a>
+            <a class="btn btn-ghost" href="https://github.com/ahmedelsayed7115?tab=repositories" target="_blank" rel="noopener">Browse All 12 Public Repos</a>
+            <a class="btn btn-ghost" href="mailto:ahmedelsayed7115@gmail.com">ahmedelsayed7115@gmail.com</a>
+          </div>
+          <div class="skill-badges">
+            <span class="skill-pill"><span class="dot" style="background:#f59e0b"></span>Power BI (.pbip / .pbix / DAX / TMDL)</span>
+            <span class="skill-pill"><span class="dot" style="background:#f97316"></span>Tableau (.twbx)</span>
+            <span class="skill-pill"><span class="dot" style="background:#06b6d4"></span>DuckDB SQL &amp; Window Functions</span>
+            <span class="skill-pill"><span class="dot" style="background:#3b82f6"></span>Python (pandas, scikit-learn)</span>
+            <span class="skill-pill"><span class="dot" style="background:#8b5cf6"></span>R Shiny &amp; Statistical EDA</span>
+          </div>
+        </div>
+
+        <!-- LIVE SHOWCASE LAUNCHPAD PANEL -->
+        <div class="hero-panel">
+          <div class="hero-panel-header">
+            <div class="window-dots">
+              <span style="background:#ef4444"></span>
+              <span style="background:#f59e0b"></span>
+              <span style="background:#10b981"></span>
+            </div>
+            <span class="mono" style="font-size:12px;color:var(--text-muted)">LIVE INTERACTIVE BI SUITES · GITHUB PAGES</span>
+          </div>
+          <div class="suite-quick-list">
+            <a class="suite-quick-item" href="https://ahmedelsayed7115.github.io/clinical-quality-biomarker-analytics/" target="_blank" rel="noopener">
+              <div class="sq-left">
+                <div class="sq-icon" style="background:rgba(20,184,166,0.18);color:#2dd4bf">01</div>
+                <div>
+                  <div class="sq-title">Clinical Outcomes &amp; Biomarker Control</div>
+                  <div class="sq-meta">Power BI (.pbip) · 1,171 EHR Patients · Dynamic DAX SVG</div>
+                </div>
+              </div>
+              <span class="sq-badge" style="background:rgba(20,184,166,0.15);color:#5eead4">37.42% HTN ↗</span>
+            </a>
+
+            <a class="suite-quick-item" href="https://ahmedelsayed7115.github.io/healthcare-operations-report/" target="_blank" rel="noopener">
+              <div class="sq-left">
+                <div class="sq-icon" style="background:rgba(244,63,94,0.18);color:#fb7185">02</div>
+                <div>
+                  <div class="sq-title">Healthcare Operations &amp; 30-Day Readmissions</div>
+                  <div class="sq-meta">Tableau (.twbx) · DuckDB SQL · 6,301 Acute Encounters</div>
+                </div>
+              </div>
+              <span class="sq-badge" style="background:rgba(244,63,94,0.15);color:#fda4af">$587.5K Leakage ↗</span>
+            </a>
+
+            <a class="suite-quick-item" href="https://ahmedelsayed7115.github.io/hr-talent-performance-analytics/" target="_blank" rel="noopener">
+              <div class="sq-left">
+                <div class="sq-icon" style="background:rgba(59,130,246,0.18);color:#60a5fa">03</div>
+                <div>
+                  <div class="sq-title">Enterprise HR Talent &amp; Retention ML</div>
+                  <div class="sq-meta">Power BI (.pbix) · Python ML · 1,470 Employees</div>
+                </div>
+              </div>
+              <span class="sq-badge" style="background:rgba(59,130,246,0.15);color:#93c5fd">0.814 ROC-AUC ↗</span>
+            </a>
+
+            <a class="suite-quick-item" href="https://ahmedelsayed7115.github.io/credit-risk-loan-analytics/" target="_blank" rel="noopener">
+              <div class="sq-left">
+                <div class="sq-icon" style="background:rgba(245,158,11,0.18);color:#fbbf24">04</div>
+                <div>
+                  <div class="sq-title">Consumer Credit Risk &amp; Loan Default Suite</div>
+                  <div class="sq-meta">Power BI (.pbix) · DAX Risk Tiers · 601 Consumer Loans</div>
+                </div>
+              </div>
+              <span class="sq-badge" style="background:rgba(245,158,11,0.15);color:#fcd34d">24.29% Default ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO KPI STRIP -->
+      <div class="kpi-grid">
+        <div class="kpi-card" style="--accent: var(--blue)">
+          <div class="kpi-label">Flagship BI &amp; Web Suites</div>
+          <div class="kpi-val">4 Live Apps</div>
+          <div class="kpi-sub">Interactive GitHub Pages + downloadable <code>.pbip</code>, <code>.pbix</code> &amp; <code>.twbx</code> workbooks</div>
+        </div>
+        <div class="kpi-card" style="--accent: var(--teal)">
+          <div class="kpi-label">Longitudinal &amp; Operational Records</div>
+          <div class="kpi-val">24,946+</div>
+          <div class="kpi-sub">15,975 vital encounters · 6,301 hospital stays · 1,470 HR profiles · 601 loans</div>
+        </div>
+        <div class="kpi-card" style="--accent: var(--amber)">
+          <div class="kpi-label">Quantified Financial Exposure</div>
+          <div class="kpi-val">$12.92M</div>
+          <div class="kpi-sub">$12.33M SHRM turnover exposure (3.93× ROI fix) + $587.5K payer claim leakage</div>
+        </div>
+        <div class="kpi-card" style="--accent: var(--purple)">
+          <div class="kpi-label">End-to-End Analytics Stack</div>
+          <div class="kpi-val">12 Repos</div>
+          <div class="kpi-sub">Star Schema DAX, DuckDB Window SQL, R Shiny Clustering &amp; Python ML</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FLAGSHIP BI SUITES SECTION -->
+  <section id="flagship">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="kicker">Executive Business Intelligence Portfolio</span>
+          <h2>Flagship BI &amp; Data Analytics Suites</h2>
+          <p class="section-desc">
+            Every flagship case study pairs a native BI desktop deliverable (Power BI or Tableau) with an interactive dark-mode web showcase, audited metrics, and quantified strategic recommendations.
+          </p>
+        </div>
+        <div class="filter-bar" role="tablist" aria-label="Filter projects by domain">
+          <button class="filter-btn active" onclick="filterProjects('all', this)">All Flagship Suites (4)</button>
+          <button class="filter-btn" onclick="filterProjects('healthcare', this)">Healthcare &amp; Clinical (2)</button>
+          <button class="filter-btn" onclick="filterProjects('hr', this)">People &amp; HR Analytics (1)</button>
+          <button class="filter-btn" onclick="filterProjects('finance', this)">Financial &amp; Credit Risk (1)</button>
+        </div>
+      </div>
+
+      <div class="flagship-grid" id="flagshipGrid">
+
+        <!-- CARD 1: CLINICAL QUALITY & BIOMARKER ANALYTICS -->
+        <article class="project-card" data-domain="healthcare" style="--card-accent: var(--teal)">
+          <div class="project-visual">
+            <img id="img-clinical" src="https://raw.githubusercontent.com/ahmedelsayed7115/clinical-quality-biomarker-analytics/main/assets/01_population_control.png" alt="Clinical Outcomes & Biomarker Control Power BI Dashboard" />
+            <div class="visual-overlay-top">
+              <span class="domain-badge">Healthcare Clinical Quality · EHR</span>
+              <span class="live-badge">● Live Interactive App</span>
+            </div>
+            <div class="view-switcher">
+              <button class="view-chip active" onclick="switchImg('img-clinical', 'https://raw.githubusercontent.com/ahmedelsayed7115/clinical-quality-biomarker-analytics/main/assets/01_population_control.png', this)">01 Population Control</button>
+              <button class="view-chip" onclick="switchImg('img-clinical', 'https://raw.githubusercontent.com/ahmedelsayed7115/clinical-quality-biomarker-analytics/main/assets/02_biomarker_trajectories.png', this)">02 Biomarker Trajectories</button>
+              <button class="view-chip" onclick="switchImg('img-clinical', 'https://raw.githubusercontent.com/ahmedelsayed7115/clinical-quality-biomarker-analytics/main/assets/03_patient_drillthrough.png', this)">03 Dynamic SVG Anatomy</button>
+              <button class="view-chip" onclick="switchImg('img-clinical', 'https://raw.githubusercontent.com/ahmedelsayed7115/clinical-quality-biomarker-analytics/main/assets/star_schema_model_view.png', this)">Star Schema</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="stack-row">
+              <span class="stack-tag">Power BI (.pbip)</span>
+              <span class="stack-tag">TMDL Star Schema</span>
+              <span class="stack-tag">Advanced DAX</span>
+              <span class="stack-tag">Dynamic DAX SVG</span>
+              <span class="stack-tag">Field Parameters</span>
+            </div>
+            <h3 class="project-title">Clinical Outcomes &amp; Biomarker Control Suite</h3>
+            <p class="project-summary">
+              Multi-page Power BI (<code>.pbip</code>) clinical analytics suite evaluating longitudinal hypertension control, cardiometabolic risk trajectories, and polypharmacy burden across 1,171 Synthea patients.
+            </p>
+            <div class="card-metrics">
+              <div class="cm-box">
+                <div class="cm-val" style="color:#2dd4bf">37.42%</div>
+                <div class="cm-lbl">AHA HTN Control (113/302 &lt;130/80)</div>
+              </div>
+              <div class="cm-box">
+                <div class="cm-val" style="color:#f59e0b">19.22%</div>
+                <div class="cm-lbl">Adult Obesity (BMI ≥30.0 kg/m²)</div>
+              </div>
+              <div class="cm-box">
+                <div class="cm-val" style="color:#fb7185">+1.01 mmHg</div>
+                <div class="cm-lbl">90+ Day Post-Therapy BP Drift</div>
+              </div>
+            </div>
+            <ul class="findings-list">
+              <li><strong>Conformed 4-Table Star Schema:</strong> Modeled <code>Dim_Patients</code> (1,171), <code>Dim_Date</code> (36,889 days), <code>Fact_Vitals</code> (15,975), and <code>Fact_Medications</code> (5,038) with deterministic <code>TOPN</code> latest-visit tie-breaking.</li>
+              <li><strong>Polypharmacy Risk Concentration:</strong> 8.28% of the cohort (97 patients) carries 5+ active medications, concentrated in the Senior Polypharmacy tier (58 patients; 46.6% all-cause historical mortality).</li>
+              <li><strong>Native Dynamic DAX SVG Human Figure:</strong> Zero-dependency <code>dataCategory: ImageUrl</code> organ-hotspot schematic reacting live to patient drill-throughs.</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-teal btn-sm" href="https://ahmedelsayed7115.github.io/clinical-quality-biomarker-analytics/" target="_blank" rel="noopener">Launch Live Showcase ↗</a>
+              <button class="btn btn-ghost btn-sm" onclick="openPreviewModal('Clinical Outcomes & Biomarker Control Suite', 'https://ahmedelsayed7115.github.io/clinical-quality-biomarker-analytics/')">In-Page Preview</button>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/ahmedelsayed7115/clinical-quality-biomarker-analytics" target="_blank" rel="noopener">GitHub Repo (.pbip)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2: HEALTHCARE OPERATIONS & 30-DAY READMISSIONS -->
+        <article class="project-card" data-domain="healthcare" style="--card-accent: var(--rose)">
+          <div class="project-visual">
+            <img id="img-ops" src="https://raw.githubusercontent.com/ahmedelsayed7115/healthcare-operations-report/main/assets/view1_annual_trend.svg" alt="Healthcare Operations & 30-Day Readmission Tableau Views" />
+            <div class="visual-overlay-top">
+              <span class="domain-badge">Hospital Operations &amp; Revenue Cycle</span>
+              <span class="live-badge">● Live Interactive App</span>
+            </div>
+            <div class="view-switcher">
+              <button class="view-chip active" onclick="switchImg('img-ops', 'https://raw.githubusercontent.com/ahmedelsayed7115/healthcare-operations-report/main/assets/view1_annual_trend.svg', this)">View 1: Annual Trend</button>
+              <button class="view-chip" onclick="switchImg('img-ops', 'https://raw.githubusercontent.com/ahmedelsayed7115/healthcare-operations-report/main/assets/view2_clinical_drivers.svg', this)">View 2: Oncology Drivers</button>
+              <button class="view-chip" onclick="switchImg('img-ops', 'https://raw.githubusercontent.com/ahmedelsayed7115/healthcare-operations-report/main/assets/view3_risk_heatmap.svg', this)">View 3: Risk Heatmap</button>
+              <button class="view-chip" onclick="switchImg('img-ops', 'https://raw.githubusercontent.com/ahmedelsayed7115/healthcare-operations-report/main/assets/view4_payer_quadrant.svg', this)">View 4: Payer Quadrant</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="stack-row">
+              <span class="stack-tag">Tableau (.twbx)</span>
+              <span class="stack-tag">DuckDB SQL</span>
+              <span class="stack-tag">Window Functions (LEAD / OVER)</span>
+              <span class="stack-tag">Star Schema ETL</span>
+              <span class="stack-tag">CMS HRRP</span>
+            </div>
+            <h3 class="project-title">Healthcare Operations &amp; 30-Day Readmission Intelligence</h3>
+            <p class="project-summary">
+              DuckDB SQL dimensional warehouse and 4-view Tableau executive suite diagnosing 30-day inpatient readmission drivers, O/E length-of-stay anomalies, and payer margin leakage across 6,301 acute encounters.
+            </p>
+            <div class="card-metrics">
+              <div class="cm-box">
+                <div class="cm-val" style="color:#fb7185">23.88%</div>
+                <div class="cm-lbl">Inpatient 30d Readm. (+8.9 pts vs 15%)</div>
+              </div>
+              <div class="cm-box">
+                <div class="cm-val" style="color:#f59e0b">97.9%</div>
+                <div class="cm-lbl">Oncology Share (430/439 Readm.)</div>
+              </div>
+              <div class="cm-box">
+                <div class="cm-val" style="color:#60a5fa">$587.5K</div>
+                <div class="cm-lbl">Uncovered Claim Margin Leakage</div>
+              </div>
+            </div>
+            <ul class="findings-list">
+              <li><strong>DuckDB Window SQL Pipeline:</strong> Partitioned <code>LEAD()</code> tracks exact 30-day inpatient readmissions while <code>AVG() OVER()</code> computes diagnosis-level Observed-to-Expected (O/E) LOS benchmarks.</li>
+              <li><strong>EHR Data Hygiene Discovery:</strong> Isolating 5 unclosed records (74 to 20,215 days) corrects raw inpatient LOS from <strong>18.04 days down to 1.09 clean days (1.00 O/E)</strong>.</li>
+              <li><strong>Payer Exposure Quadrant:</strong> Medicare ($180.1K leakage; 32.4% readmission) and Self-Pay ($92.6K; 0% coverage) account for 46.4% of uncovered claim costs.</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-primary btn-sm" href="https://ahmedelsayed7115.github.io/healthcare-operations-report/" target="_blank" rel="noopener">Launch Live Showcase ↗</a>
+              <button class="btn btn-ghost btn-sm" onclick="openPreviewModal('Healthcare Operations & 30-Day Readmission Intelligence', 'https://ahmedelsayed7115.github.io/healthcare-operations-report/')">In-Page Preview</button>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/ahmedelsayed7115/healthcare-operations-report" target="_blank" rel="noopener">GitHub Repo (.twbx + SQL)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3: HR TALENT & PERFORMANCE ANALYTICS -->
+        <article class="project-card" data-domain="hr" style="--card-accent: var(--blue)">
+          <div class="project-visual">
+            <img id="img-hr" src="assets/hr_showcase_preview.svg" alt="Enterprise HR Talent & Performance Intelligence Showcase" />
+            <div class="visual-overlay-top">
+              <span class="domain-badge">People Analytics &amp; Retention ML</span>
+              <span class="live-badge">● Live Interactive App</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="stack-row">
+              <span class="stack-tag">Power BI (.pbix)</span>
+              <span class="stack-tag">Python (scikit-learn)</span>
+              <span class="stack-tag">5-Fold Out-of-Fold CV</span>
+              <span class="stack-tag">SHRM Cost Modeling</span>
+              <span class="stack-tag">DAX</span>
+            </div>
+            <h3 class="project-title">Enterprise HR Talent &amp; Performance Intelligence</h3>
+            <p class="project-summary">
+              Workforce attrition economics, compa-ratio pay equity auditing, and out-of-fold machine learning flight-risk scoring across 1,470 employees and 35 organizational attributes.
+            </p>
+            <div class="card-metrics">
+              <div class="cm-box">
+                <div class="cm-val" style="color:#fb7185">$12.33M</div>
+                <div class="cm-lbl">SHRM Turnover Cost (16.12% Rate)</div>
+              </div>
+              <div class="cm-box">
+                <div class="cm-val" style="color:#60a5fa">0.814</div>
+                <div class="cm-lbl">Out-of-Fold ROC-AUC Flight Risk</div>
+              </div>
+              <div class="cm-box">
+                <div class="cm-val" style="color:#2dd4bf">3.93× ROI</div>
+                <div class="cm-lbl">$401K Pay Fix Protects $1.58M</div>
+              </div>
+            </div>
+            <ul class="findings-list">
+              <li><strong>Zero Merit Premium Uncovered:</strong> Top performers average a <strong>1.01 compa-ratio vs. 1.03 for standard peers</strong>, leaving 40.3% of high performers paid below market midpoint.</li>
+              <li><strong>Overtime Burnout Multiplier:</strong> Employees working overtime churn at <strong>30.5% vs. 10.4%</strong> baseline (2.92× relative risk; <em>p</em> &lt; 0.0001).</li>
+              <li><strong>Predictive Retention Targeting:</strong> Stratified 5-fold cross-validated probabilities isolate 42 active high-risk employees representing $2.18M in preventable replacement exposure.</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-primary btn-sm" href="https://ahmedelsayed7115.github.io/hr-talent-performance-analytics/" target="_blank" rel="noopener">Launch Live Showcase ↗</a>
+              <button class="btn btn-ghost btn-sm" onclick="openPreviewModal('Enterprise HR Talent & Performance Intelligence', 'https://ahmedelsayed7115.github.io/hr-talent-performance-analytics/')">In-Page Preview</button>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/ahmedelsayed7115/hr-talent-performance-analytics" target="_blank" rel="noopener">GitHub Repo (.pbix + ML)</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 4: CONSUMER CREDIT RISK & LOAN DEFAULT ANALYTICS -->
+        <article class="project-card" data-domain="finance" style="--card-accent: var(--amber)">
+          <div class="project-visual">
+            <img id="img-credit" src="assets/credit_showcase_preview.png" alt="Consumer Credit Risk & Loan Default Intelligence Showcase" />
+            <div class="visual-overlay-top">
+              <span class="domain-badge">Financial Risk &amp; Credit Underwriting</span>
+              <span class="live-badge">● Live Interactive App</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="stack-row">
+              <span class="stack-tag">Power BI (.pbix)</span>
+              <span class="stack-tag">DAX Risk Segmentation</span>
+              <span class="stack-tag">FICO × DTI Matrix</span>
+              <span class="stack-tag">Underwriting Policy Simulation</span>
+            </div>
+            <h3 class="project-title">Consumer Credit Risk &amp; Loan Default Intelligence</h3>
+            <p class="project-summary">
+              Multi-factor credit underwriting and default diagnostic across 601 consumer loans, isolating FICO score thresholds, Debt-to-Income (DTI) inflection boundaries, and loan purpose ticket-size exposure.
+            </p>
+            <div class="card-metrics">
+              <div class="cm-box">
+                <div class="cm-val" style="color:#fbbf24">24.29%</div>
+                <div class="cm-lbl">Portfolio Default Rate (146/601)</div>
+              </div>
+              <div class="cm-box">
+                <div class="cm-val" style="color:#fb7185">49.14%</div>
+                <div class="cm-lbl">Subprime (&lt;600 FICO) Default</div>
+              </div>
+              <div class="cm-box">
+                <div class="cm-val" style="color:#2dd4bf">700 FICO</div>
+                <div class="cm-lbl">Natural Risk Boundary (11.7% in 750+)</div>
+              </div>
+            </div>
+            <ul class="findings-list">
+              <li><strong>FICO Score Cliff:</strong> Subprime borrowers (<code>520–599</code>) default at <strong>49.14% (57/116)</strong> — 4.2× higher than Very Good/Exceptional borrowers (<code>750+</code> at <strong>11.69%</strong>).</li>
+              <li><strong>DTI Structural Inflection at 40%:</strong> Defaulters carry a <strong>57.9% average DTI vs. 47.1%</strong> for performing loans; default triples from 11.89% (<code>20–40%</code> DTI) to 36.05% (<code>60%+</code> DTI).</li>
+              <li><strong>Ticket-Size &amp; Tenure Amplification:</strong> Defaulted Education (+71%), Medical (+47%), and Debt Consolidation (+38%) loans carry significantly higher principal balances, while <code>&lt;2 yr</code> tenure defaults at 34.52%.</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-primary btn-sm" href="https://ahmedelsayed7115.github.io/credit-risk-loan-analytics/" target="_blank" rel="noopener">Launch Live Showcase ↗</a>
+              <button class="btn btn-ghost btn-sm" onclick="openPreviewModal('Consumer Credit Risk & Loan Default Intelligence', 'https://ahmedelsayed7115.github.io/credit-risk-loan-analytics/')">In-Page Preview</button>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/ahmedelsayed7115/credit-risk-loan-analytics" target="_blank" rel="noopener">GitHub Repo (.pbix)</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CROSS-PROJECT ARCHITECTURE & CAPABILITY MATRIX -->
+  <section id="comparison" class="alt">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="kicker">Engineering Rigor &amp; Analytical Depth</span>
+          <h2>Cross-Project Architecture &amp; Impact Matrix</h2>
+          <p class="section-desc">
+            How the four flagship suites demonstrate end-to-end ownership from raw relational ingestion and Star Schema modeling to executive decision support.
+          </p>
+        </div>
+      </div>
+
+      <div class="comp-grid">
+        <div class="panel-card" style="overflow-x:auto">
+          <h3>Flagship Suite Technical Comparison</h3>
+          <div class="panel-sub">Verified datasets, data modeling patterns, and primary business outcomes</div>
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th>Flagship Suite</th>
+                <th>Primary BI &amp; Code Stack</th>
+                <th>Data Model &amp; Scope</th>
+                <th>Headline Quantified Outcome</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>01 · Clinical Biomarkers</strong></td>
+                <td><code>Power BI (.pbip)</code> · <code>TMDL</code> · <code>DAX</code> · <code>Dynamic SVG</code></td>
+                <td>4-Table Star Schema<br><span style="color:var(--text-muted)">1,171 patients · 15,975 vitals</span></td>
+                <td><strong style="color:#2dd4bf">37.42% HTN Control</strong> &amp; 46.6% Senior Polypharmacy mortality isolated</td>
+              </tr>
+              <tr>
+                <td><strong>02 · Healthcare Ops</strong></td>
+                <td><code>Tableau (.twbx)</code> · <code>DuckDB SQL</code> · <code>Python SVG</code></td>
+                <td>Dimensional SQL Warehouse<br><span style="color:var(--text-muted)">6,301 encounters · 1,838 inpatient</span></td>
+                <td><strong style="color:#fb7185">97.9% Oncology Readmissions</strong> &amp; $587.5K payer claim leakage audited</td>
+              </tr>
+              <tr>
+                <td><strong>03 · HR Talent &amp; ML</strong></td>
+                <td><code>Power BI (.pbix)</code> · <code>Python</code> · <code>scikit-learn</code> · <code>DAX</code></td>
+                <td>Enriched Feature Pipeline<br><span style="color:var(--text-muted)">1,470 employees · 35 features</span></td>
+                <td><strong style="color:#60a5fa">3.93× Retention ROI</strong> ($401K equity fix protects $1.58M; 0.814 AUC)</td>
+              </tr>
+              <tr>
+                <td><strong>04 · Consumer Credit Risk</strong></td>
+                <td><code>Power BI (.pbix)</code> · <code>DAX</code> · <code>Policy Simulation</code></td>
+                <td>Merged Borrower Schema<br><span style="color:var(--text-muted)">601 loans · 10 purpose cohorts</span></td>
+                <td><strong style="color:#fbbf24">40–55% Default Cut</strong> via FICO ≥600 &amp; DTI ≤50% underwriting guardrails</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel-card">
+          <h3>Analytics Competency Coverage</h3>
+          <div class="panel-sub">Relative technical emphasis across the portfolio (0–100 scale)</div>
+          <div style="height:290px;position:relative">
+            <canvas id="competencyChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORATORY DATA ANALYSIS, R SHINY & PREDICTIVE ML SECTION -->
+  <section id="eda-ml">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="kicker">Statistical Apps, EDA &amp; Machine Learning</span>
+          <h2>Exploratory Data Analysis &amp; Predictive Modeling Repositories</h2>
+          <p class="section-desc">
+            Complementary Python and R repositories demonstrating automated data cleaning, interactive R Shiny statistical apps, industrial telemetry anomaly detection, and containerized MLOps workflows.
+          </p>
+        </div>
+      </div>
+
+      <div class="eda-grid">
+        <div class="eda-card">
+          <div>
+            <div class="eda-top">
+              <span class="eda-type">R Shiny · Unsupervised ML</span>
+              <span class="stack-tag">R · Shiny · K-Means</span>
+            </div>
+            <h3>Interactive Clustering &amp; Automated Excel Cleaning App</h3>
+            <p>
+              End-to-end R Shiny web application automating Excel data ingestion, duplicate removal, missing-value imputation, IQR outlier filtering, and interactive K-Means cluster visualization.
+            </p>
+          </div>
+          <div class="eda-footer">
+            <span class="mono" style="color:var(--text-muted);font-size:11.5px">Data-Science-Project</span>
+            <a class="eda-link" href="https://github.com/ahmedelsayed7115/Data-Science-Project" target="_blank" rel="noopener">View Repository →</a>
+          </div>
+        </div>
+
+        <div class="eda-card">
+          <div>
+            <div class="eda-top">
+              <span class="eda-type">People Analytics · Python EDA</span>
+              <span class="stack-tag">pandas · seaborn · matplotlib</span>
+            </div>
+            <h3>Workforce Compensation &amp; Pay Distribution Audit</h3>
+            <p>
+              Statistical profiling and exploratory visualization of employee base salaries, overtime pay, benefits allocation, and multi-year total compensation skew across job families.
+            </p>
+          </div>
+          <div class="eda-footer">
+            <span class="mono" style="color:var(--text-muted);font-size:11.5px">Shai-For-Ai-Task</span>
+            <a class="eda-link" href="https://github.com/ahmedelsayed7115/Shai-For-Ai-Task" target="_blank" rel="noopener">View Repository →</a>
+          </div>
+        </div>
+
+        <div class="eda-card">
+          <div>
+            <div class="eda-top">
+              <span class="eda-type">Industrial Analytics · Classification</span>
+              <span class="stack-tag">Python · scikit-learn</span>
+            </div>
+            <h3>Industrial Predictive Maintenance &amp; Failure Detection</h3>
+            <p>
+              Sensor telemetry exploratory analysis, feature engineering (torque, rotational speed, thermal differential), and supervised classification to predict equipment failures before unplanned downtime.
+            </p>
+          </div>
+          <div class="eda-footer">
+            <span class="mono" style="color:var(--text-muted);font-size:11.5px">machine_failure_det</span>
+            <a class="eda-link" href="https://github.com/ahmedelsayed7115/machine_failure_det" target="_blank" rel="noopener">View Repository →</a>
+          </div>
+        </div>
+
+        <div class="eda-card">
+          <div>
+            <div class="eda-top">
+              <span class="eda-type">Supervised ML · Interactive App</span>
+              <span class="stack-tag">scikit-learn · Streamlit</span>
+            </div>
+            <h3>Multi-Class Tabular Classification Benchmark</h3>
+            <p>
+              End-to-end preprocessing pipeline, multi-class classifier benchmarking, confusion matrix diagnostics, and interactive web inference interface for real-time predictions.
+            </p>
+          </div>
+          <div class="eda-footer">
+            <span class="mono" style="color:var(--text-muted);font-size:11.5px">Multi_Classification_Model</span>
+            <a class="eda-link" href="https://github.com/ahmedelsayed7115/Multi_Classification_Model" target="_blank" rel="noopener">View Repository →</a>
+          </div>
+        </div>
+
+        <div class="eda-card">
+          <div>
+            <div class="eda-top">
+              <span class="eda-type">MLOps · Experiment Tracking</span>
+              <span class="stack-tag">MLflow · Docker · FastAPI</span>
+            </div>
+            <h3>Containerized MLOps &amp; MLflow Model Registry</h3>
+            <p>
+              Reproducible machine learning pipelines with automated experiment tracking, hyperparameter logging, artifact versioning in MLflow, and containerized FastAPI inference endpoints.
+            </p>
+          </div>
+          <div class="eda-footer">
+            <span class="mono" style="color:var(--text-muted);font-size:11.5px">MLops_Project &amp; Mflow_project</span>
+            <a class="eda-link" href="https://github.com/ahmedelsayed7115/MLops_Project" target="_blank" rel="noopener">View Repository →</a>
+          </div>
+        </div>
+
+        <div class="eda-card">
+          <div>
+            <div class="eda-top">
+              <span class="eda-type">Computer Vision · Safety Analytics</span>
+              <span class="stack-tag">Python · YOLOv8 · OpenCV</span>
+            </div>
+            <h3>Automated Infrastructure &amp; PPE Safety Compliance</h3>
+            <p>
+              Real-time object detection models for road surface defect inspection (<code>Holes_detiction</code>) and industrial workplace helmet compliance monitoring (<code>helmet_prooject</code>).
+            </p>
+          </div>
+          <div class="eda-footer">
+            <span class="mono" style="color:var(--text-muted);font-size:11.5px">Holes_detiction · helmet_prooject</span>
+            <a class="eda-link" href="https://github.com/ahmedelsayed7115/Holes_detiction" target="_blank" rel="noopener">View Repository →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE TECHNICAL COMPETENCIES -->
+  <section id="competencies" class="alt">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="kicker">Tools, Languages &amp; Domain Frameworks</span>
+          <h2>Core Data Analytics &amp; BI Stack</h2>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-col">
+          <h3>📊 BI &amp; Executive Dashboards</h3>
+          <ul>
+            <li><strong>Power BI Desktop:</strong> Git-friendly <code>.pbip</code> (PBIR / TMDL) &amp; <code>.pbix</code> suites</li>
+            <li><strong>Advanced DAX:</strong> <code>TOPN</code> tie-breaking, dynamic Field Parameters, KPI SVG cards</li>
+            <li><strong>Dynamic DAX SVG:</strong> Zero-dependency <code>ImageUrl</code> anatomical &amp; KPI schematics</li>
+            <li><strong>Tableau Desktop:</strong> Packaged <code>.twbx</code> executive views &amp; quadrant storyboards</li>
+          </ul>
+        </div>
+
+        <div class="skill-col">
+          <h3>🗄️ SQL &amp; Data Modeling</h3>
+          <ul>
+            <li><strong>Dimensional Modeling:</strong> Conformed Star Schemas (<code>Dim_Date</code>, <code>Dim_Patients</code>, Fact tables)</li>
+            <li><strong>DuckDB Window SQL:</strong> <code>LEAD()</code>, <code>LAG()</code>, <code>AVG() OVER()</code>, <code>ROW_NUMBER()</code></li>
+            <li><strong>Data Hygiene Auditing:</strong> Open-encounter LOS outlier isolation &amp; schema validation</li>
+            <li><strong>ETL Automation:</strong> Power Query M &amp; reproducible SQL build scripts</li>
+          </ul>
+        </div>
+
+        <div class="skill-col">
+          <h3>🐍 Python &amp; R Analytics</h3>
+          <ul>
+            <li><strong>Data Manipulation:</strong> <code>pandas</code>, <code>NumPy</code>, vectorized feature engineering</li>
+            <li><strong>Predictive Modeling:</strong> <code>scikit-learn</code> Stratified K-Fold CV, ROC-AUC, Permutation Importance</li>
+            <li><strong>R &amp; R Shiny:</strong> Interactive web apps, automated Excel cleaning &amp; K-Means clustering</li>
+            <li><strong>Statistical Testing:</strong> Chi-square, Mann-Whitney U, O/E ratio benchmarking</li>
+          </ul>
+        </div>
+
+        <div class="skill-col">
+          <h3>🏥 Domain Intelligence</h3>
+          <ul>
+            <li><strong>Healthcare Clinical:</strong> AHA/ACC Hypertension Control, BMI/Glucose trajectories, Polypharmacy</li>
+            <li><strong>Hospital Revenue Cycle:</strong> CMS HRRP 30-day readmissions, O/E LOS, Payer margin leakage</li>
+            <li><strong>People Analytics:</strong> SHRM replacement costing, Compa-Ratio pay equity, 9-Box talent grids</li>
+            <li><strong>Consumer Credit Risk:</strong> FICO × DTI underwriting matrices &amp; vintage default sensitivity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong style="color:var(--text)">Ahmed Elsayed</strong> · Data Analyst &amp; Business Intelligence Developer<br />
+        <span>Power BI (DAX, TMDL, Star Schema) · Tableau · DuckDB SQL · Python · R</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/ahmedelsayed7115" target="_blank" rel="noopener">GitHub Profile</a>
+        <a href="https://ahmedelsayed7115.github.io/clinical-quality-biomarker-analytics/" target="_blank" rel="noopener">01 Clinical BI</a>
+        <a href="https://ahmedelsayed7115.github.io/healthcare-operations-report/" target="_blank" rel="noopener">02 Healthcare Ops</a>
+        <a href="https://ahmedelsayed7115.github.io/hr-talent-performance-analytics/" target="_blank" rel="noopener">03 HR Talent</a>
+        <a href="https://ahmedelsayed7115.github.io/credit-risk-loan-analytics/" target="_blank" rel="noopener">04 Credit Risk</a>
+        <a href="mailto:ahmedelsayed7115@gmail.com">ahmedelsayed7115@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- IN-PAGE LIVE PREVIEW MODAL -->
+  <div class="modal-backdrop" id="previewModal" onclick="if(event.target===this) closePreviewModal()">
+    <div class="modal-window">
+      <div class="modal-bar">
+        <div class="modal-title" id="modalTitle">Live Interactive Showcase Preview</div>
+        <div class="modal-actions">
+          <a class="btn btn-primary btn-sm" id="modalExternalBtn" href="#" target="_blank" rel="noopener">Open Full Tab ↗</a>
+          <button class="btn btn-ghost btn-sm" onclick="closePreviewModal()">✕ Close</button>
+        </div>
+      </div>
+      <iframe class="modal-iframe" id="modalIframe" src="about:blank" title="Live Project Showcase Preview"></iframe>
+    </div>
+  </div>
+
+  <script>
+    // Switch dashboard thumbnail preview inside a project card
+    function switchImg(imgId, src, btn) {
+      const img = document.getElementById(imgId);
+      if (img) img.src = src;
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.view-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // Filter flagship project cards by domain
+    function filterProjects(domain, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#flagshipGrid .project-card').forEach(card => {
+        if (domain === 'all' || card.dataset.domain === domain) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Open in-page interactive iframe modal
+    function openPreviewModal(title, url) {
+      document.getElementById('modalTitle').textContent = title + ' — Live Interactive Showcase';
+      document.getElementById('modalExternalBtn').href = url;
+      document.getElementById('modalIframe').src = url;
+      document.getElementById('previewModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePreviewModal() {
+      document.getElementById('previewModal').classList.remove('open');
+      document.getElementById('modalIframe').src = 'about:blank';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePreviewModal();
+    });
+
+    // Competency Radar / Horizontal Bar Chart
+    const ctx = document.getElementById('competencyChart');
+    if (ctx && window.Chart) {
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Power BI (DAX / TMDL / .pbip)',
+            'Star Schema & Dimensional Modeling',
+            'SQL & DuckDB Window Analytics',
+            'Tableau Executive Dashboards',
+            'Python (pandas / scikit-learn)',
+            'R Shiny & Statistical EDA',
+            'Healthcare, HR & Risk Domain KPIs'
+          ],
+          datasets: [{
+            label: 'Portfolio Coverage & Depth (%)',
+            data: [98, 96, 94, 90, 92, 86, 96],
+            backgroundColor: [
+              'rgba(59, 130, 246, 0.78)',
+              'rgba(20, 184, 166, 0.78)',
+              'rgba(6, 182, 212, 0.78)',
+              'rgba(249, 115, 22, 0.78)',
+              'rgba(139, 92, 246, 0.78)',
+              'rgba(16, 185, 129, 0.78)',
+              'rgba(245, 158, 11, 0.78)'
+            ],
+            borderColor: [
+              '#3b82f6', '#14b8a6', '#06b6d4', '#f97316', '#8b5cf6', '#10b981', '#f59e0b'
+            ],
+            borderWidth: 1.5,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#0c1322',
+              borderColor: '#1e2d4a',
+              borderWidth: 1,
+              titleColor: '#f1f5f9',
+              bodyColor: '#cbd5e1'
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 100,
+              grid: { color: 'rgba(30, 45, 74, 0.5)' },
+              ticks: { color: '#94a3b8', callback: v => v + '%' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: '#e2e8f0', font: { size: 11.5, weight: '600' } }
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
