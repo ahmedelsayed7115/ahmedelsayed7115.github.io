@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <linearGradient id="roseGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="url(#bgGrad)"/>
+
+  <!-- Top Header Bar -->
+  <rect x="40" y="30" width="1520" height="82" rx="14" fill="#111a2e" stroke="#1e2d4a" stroke-width="2"/>
+  <rect x="64" y="49" width="44" height="44" rx="10" fill="url(#blueGrad)"/>
+  <text x="86" y="77" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">HR</text>
+  <text x="126" y="66" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#f1f5f9">Enterprise HR Talent &amp; Performance Intelligence Suite</text>
+  <text x="126" y="92" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#94a3b8">Power BI (.pbix) + Python Out-of-Fold Flight Risk ML • n = 1,470 Employees • 35 Organizational Attributes</text>
+  <rect x="1310" y="50" width="220" height="42" rx="21" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="1420" y="76" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#60a5fa" text-anchor="middle">● 5-Fold CV ROC-AUC 0.814</text>
+
+  <!-- 4 Executive KPI Cards -->
+  <!-- Card 1 -->
+  <rect x="40" y="136" width="362" height="150" rx="14" fill="#111a2e" stroke="#1e2d4a" stroke-width="2"/>
+  <rect x="40" y="136" width="362" height="5" rx="2" fill="#f43f5e"/>
+  <text x="66" y="174" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#94a3b8">ANNUAL TURNOVER EXPOSURE (SHRM)</text>
+  <text x="66" y="230" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" fill="#fb7185">$12.33M</text>
+  <text x="66" y="262" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#cbd5e1">16.12% Attrition (237 exits • 52.4% Regrettable)</text>
+
+  <!-- Card 2 -->
+  <rect x="426" y="136" width="362" height="150" rx="14" fill="#111a2e" stroke="#1e2d4a" stroke-width="2"/>
+  <rect x="426" y="136" width="362" height="5" rx="2" fill="#f59e0b"/>
+  <text x="452" y="174" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#94a3b8">MERIT COMPA-RATIO PARADOX</text>
+  <text x="452" y="230" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" fill="#fbbf24">1.01 vs 1.03</text>
+  <text x="452" y="262" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#cbd5e1">40.3% of Top Performers Paid Below Midpoint</text>
+
+  <!-- Card 3 -->
+  <rect x="812" y="136" width="362" height="150" rx="14" fill="#111a2e" stroke="#1e2d4a" stroke-width="2"/>
+  <rect x="812" y="136" width="362" height="5" rx="2" fill="#3b82f6"/>
+  <text x="838" y="174" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#94a3b8">OVERTIME BURNOUT MULTIPLIER</text>
+  <text x="838" y="230" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" fill="#60a5fa">2.92× Risk</text>
+  <text x="838" y="262" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#cbd5e1">30.5% Overtime Attrition vs. 10.4% Baseline</text>
+
+  <!-- Card 4 -->
+  <rect x="1198" y="136" width="362" height="150" rx="14" fill="#111a2e" stroke="#1e2d4a" stroke-width="2"/>
+  <rect x="1198" y="136" width="362" height="5" rx="2" fill="#14b8a6"/>
+  <text x="1224" y="174" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#94a3b8">PAY EQUITY RECALIBRATION ROI</text>
+  <text x="1224" y="230" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" fill="#2dd4bf">3.93× ROI</text>
+  <text x="1224" y="262" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#cbd5e1">$401K Raise Pool Protects $1.58M Value</text>
+
+  <!-- Left Chart: Attrition by Role & Overtime Multiplier -->
+  <rect x="40" y="310" width="748" height="550" rx="16" fill="#111a2e" stroke="#1e2d4a" stroke-width="2"/>
+  <text x="72" y="356" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#f1f5f9">Attrition Concentration by Job Role &amp; Overtime Burnout</text>
+  <text x="72" y="382" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" fill="#94a3b8">Sales Representatives (39.8%), Lab Technicians (23.9%), and Overtime cohorts drive preventable exits</text>
+
+  <!-- Horizontal Bars -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">
+    <text x="72" y="438">Sales Representative</text>
+    <rect x="260" y="418" width="420" height="28" rx="6" fill="url(#roseGrad)"/>
+    <text x="692" y="438" fill="#fb7185" font-weight="800">39.8%</text>
+
+    <text x="72" y="494">Laboratory Technician</text>
+    <rect x="260" y="474" width="252" height="28" rx="6" fill="url(#roseGrad)"/>
+    <text x="524" y="494" fill="#fb7185" font-weight="800">23.9%</text>
+
+    <text x="72" y="550">Human Resources</text>
+    <rect x="260" y="530" width="243" height="28" rx="6" fill="#f59e0b" fill-opacity="0.8"/>
+    <text x="515" y="550" fill="#fbbf24" font-weight="800">23.1%</text>
+
+    <text x="72" y="606">Sales Executive</text>
+    <rect x="260" y="586" width="184" height="28" rx="6" fill="#f59e0b" fill-opacity="0.75"/>
+    <text x="456" y="606" fill="#fbbf24" font-weight="800">17.5%</text>
+
+    <text x="72" y="662">Research Scientist</text>
+    <rect x="260" y="642" width="169" height="28" rx="6" fill="url(#cyanGrad)"/>
+    <text x="441" y="662" fill="#60a5fa" font-weight="800">16.1%</text>
+
+    <text x="72" y="718">Healthcare Rep / Mgr</text>
+    <rect x="260" y="698" width="72" height="28" rx="6" fill="#14b8a6" fill-opacity="0.8"/>
+    <text x="344" y="718" fill="#2dd4bf" font-weight="800">6.8%</text>
+  </g>
+
+  <rect x="72" y="766" width="684" height="64" rx="10" fill="#0b1220" stroke="#1e2d4a"/>
+  <text x="94" y="794" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#60a5fa">KEY FINDING • OVERTIME × UNDER-MIDPOINT PAY</text>
+  <text x="94" y="816" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#cbd5e1">High performers working Overtime below 1.00 Compa-Ratio experience 44.2% annual attrition.</text>
+
+  <!-- Right Chart: 5-Fold Out-of-Fold ML Flight Risk & ROI Simulator -->
+  <rect x="812" y="310" width="748" height="550" rx="16" fill="#111a2e" stroke="#1e2d4a" stroke-width="2"/>
+  <text x="844" y="356" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#f1f5f9">Stratified 5-Fold ML Flight Risk &amp; Permutation Drivers</text>
+  <text x="844" y="382" font-family="Segoe UI, Arial, sans-serif" font-size="13.5" fill="#94a3b8">Out-of-fold Logistic Regression (0.814 ROC-AUC) &amp; Random Forest (0.793 ROC-AUC) risk tiers</text>
+
+  <!-- Feature Importance Bars -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#e2e8f0">
+    <text x="844" y="438">1. OverTimeStatus (Yes)</text>
+    <rect x="1080" y="420" width="380" height="24" rx="5" fill="url(#blueGrad)"/>
+    <text x="1472" y="438" fill="#2dd4bf" font-weight="800">+0.068 AUC</text>
+
+    <text x="844" y="486">2. MonthlyIncome / Compa</text>
+    <rect x="1080" y="468" width="310" height="24" rx="5" fill="url(#blueGrad)"/>
+    <text x="1402" y="486" fill="#2dd4bf" font-weight="800">+0.054 AUC</text>
+
+    <text x="844" y="534">3. TotalWorkingYears</text>
+    <rect x="1080" y="516" width="245" height="24" rx="5" fill="url(#blueGrad)"/>
+    <text x="1337" y="534" fill="#60a5fa" font-weight="800">+0.041 AUC</text>
+
+    <text x="844" y="582">4. JobSatisfaction &amp; Env</text>
+    <rect x="1080" y="564" width="210" height="24" rx="5" fill="url(#blueGrad)"/>
+    <text x="1302" y="582" fill="#60a5fa" font-weight="800">+0.035 AUC</text>
+
+    <text x="844" y="630">5. StockOptionLevel (0)</text>
+    <rect x="1080" y="612" width="180" height="24" rx="5" fill="url(#blueGrad)"/>
+    <text x="1272" y="630" fill="#60a5fa" font-weight="800">+0.029 AUC</text>
+  </g>
+
+  <!-- Retention Action Matrix Box -->
+  <rect x="844" y="672" width="684" height="158" rx="12" fill="#0b1220" stroke="#14b8a6" stroke-width="1.5"/>
+  <text x="868" y="704" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="800" fill="#2dd4bf">EXECUTIVE RETENTION SIMULATOR • QUANTIFIED BUSINESS CASE</text>
+  <text x="868" y="734" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#f1f5f9">• Active High-Risk Flight Watchlist: <tspan font-weight="800" fill="#fb7185">42 Key Employees ($2.18M SHRM Exposure)</tspan></text>
+  <text x="868" y="764" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#f1f5f9">• Targeted Compa-Ratio Raise to 1.00 Midpoint: <tspan font-weight="800" fill="#fbbf24">$401,200 Budget Pool</tspan></text>
+  <text x="868" y="794" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#f1f5f9">• Net Retained Replacement Value: <tspan font-weight="800" fill="#2dd4bf">$1,576,800 Saved (3.93× Net First-Year ROI)</tspan></text>
+</svg>
